@@ -1,0 +1,68 @@
+/*Question -> Write a C++ program to define a base class Item (item-no, name, price) Derive a class Discounted-Item (discount-percent).
+ A customer purchases ,'n' items. Display the item-wise bill and total amount using appropriate format. ?*/
+
+#include<iostream>
+using namespace std;
+class Item
+{
+    public:
+       int itemno;
+       char name[20];
+       float price;
+
+};
+class Discount: public Item
+{
+    public:
+         int discount;
+         int discounted_price;
+        void setdetail(){
+              cout<<"\nEntre item Name : ";
+              cin>>name;
+              cout<<"\nEntre item number : ";
+              cin>>itemno;
+              cout<<"\nEntre item price  : ";
+              cin>>price;
+              cout<<"\nEntre discount percent : ";
+              cin>>discount;
+               cout<<"\n.............................."<<endl;
+                discounted_price=price-price*discount/100;
+        }
+        void display(){
+               float paid;
+            cout<<"\nItem name :"<<name;
+            cout<<"\nItem number :"<<itemno;
+            cout<<"\nItem price :"<<price;
+            cout<<"\ndiscount percentage :"<<discount;
+            cout<<"\ndiscounted price :"<< discounted_price;
+            cout<<"\n................................"<<endl;
+        }
+         
+};
+ int  main()
+ {
+     
+     Discount main[100];
+     int num,i,disc=0;
+     float Totalprice;
+    cout<<"How many item you want to entre ? :";
+     cin>>num;
+     for(int i=1;i<=num;i++){
+            main[i].setdetail();
+      }
+       for(int i=1;i<=num;i++){
+           main[i].display();
+      }
+      for(i=1;i<=num;i++){
+          Totalprice+=main[i].price;
+      } 
+       for(i=1;i<=num;i++){
+            disc+=main[i].price-main[i].discounted_price;
+       }
+       cout<<"\nTotal price is : "<<Totalprice;
+       cout<<"\nTotal discount :"<<disc;
+       cout<<"\nTotal payable amount :"<<Totalprice -disc;
+      
+        return 0;
+
+ }
