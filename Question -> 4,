@@ -1,0 +1,67 @@
+/*Question ->Write a C++ program to design a base class Person (name, address,phone_no). Derive a class Employee (eno, ename) from Person.
+ Derive a class Manager (designation, department name, basic-salary) fromEmployee. Write a menu driven program to ?:
+ a. Accept all details of 'n' managers.
+ b. Display manager having highest salary*/
+
+#include<iostream>
+using namespace std;
+class Person
+{
+   protected:
+      char name[20];
+      char add[20];
+      int   phoneno;
+};
+class Employee:public Person
+{
+     public:
+       int empno;
+       char empname[20];
+};
+class Managers:public Employee
+{
+    public:
+       char desig[20];
+       char depname[20];
+       float salary;
+    public:
+           void empdetail(){
+               cout<<":: Entre details of manager ::"<<endl;
+                cout<<"\nEntre employee no. : ";
+                cin>>empno;
+                cout<<"\nEntre name  : ";
+                cin>>empname;
+                cout<<"\nEntre address : ";
+                cin>>add;
+                cout<<"\nEntre phone no : ";
+                cin>>phoneno;
+                cout<<"\nEntre designation : ";
+                cin>>desig;
+                cout<<"\nEntre department name : ";
+                cin>>depname;
+                cout<<"\nEntre basic salary : ";
+                cin>>salary;
+             }
+};
+int main()
+{
+      int number,i; 
+        Managers  main[100];
+      cout<<"How many manager you want to entre ? : ";
+       cin>>number;
+       cout<<"........................................"<<endl;
+       for(i=0;i<number;i++)
+       {
+         main[i].empdetail();
+       }
+       int temp=0;
+         for(i=1;i<=number;i++)
+         { 
+             if(main[temp].salary<main[i].salary)
+               temp=i;
+         }
+         cout<<"\n.........................................";
+         cout<<"\nManager having highest salary is :"<<main[temp].salary<<"\n And name of manager is :"
+          <<main[temp].empname;
+         return 0;
+}
