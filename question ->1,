@@ -1,0 +1,50 @@
+/* question -> Write a C++ program to demonstrate how a common friend function ca be used to exchange 
+ the private values of two classes. (Use call by reference method). ?*/
+
+ #include<iostream>
+ using namespace std ;
+ class B;
+ class A
+ {
+     protected:
+          int num1;
+     public:
+         A(){
+            cout<<"\nentre number ,A :";
+            cin>>num1;
+         }
+          void shownum (){
+             cout<<"\nvalue of number 1 :"<<num1;
+          }
+         friend void swap(A *num1,B *num2);
+ };
+ class B
+ {
+   protected:
+        int num2;
+    public:
+        B(){
+             cout<<"\nentre number ,B :";
+             cin>>num2;
+        }
+        void  shownum(){
+            cout<<"\nvalue of number 2 :"<<num2;
+        }
+      friend void swap(A *num1,B *num2);
+ };
+   void swap(A *num1,B *num2){
+      int num3;
+        num3=num1->num1;
+        num1->num1=num2->num2;
+        num2->num2=num3;
+   }
+ int main()
+ {
+     A a;
+     B b;
+     swap(&a,&b);
+     a.shownum();
+     b.shownum();
+     return 0;
+
+ }
