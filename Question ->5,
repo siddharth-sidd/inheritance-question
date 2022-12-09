@@ -1,0 +1,45 @@
+/*Question -> Write a C++ program to calculate the percentage of a student using multi-levelinheritance. Accept the marks of three
+ subjects in base class. A class will be derived from the above mentioned class which includes a function to find
+  the total marks obtained and another class derived from this class which calculates and displays the percentage of students.*/
+
+#include<iostream>
+using namespace std;
+class  Marks
+{
+   protected:
+        float a,b,c;
+  public:
+      void setnumber(){
+         cout<<"entre student mark :"<<endl;
+         cin>>a>>b>>c;
+      }
+       void shownumber(){
+          cout<<":: marks of all subject are ::"<<endl;
+          cout<<"first subject  :"<<a<<endl<<"scound subject :"<<b<<endl<<"third subject  :"<<c<<endl;
+       }
+};
+ class Total: public Marks
+ {
+      public:
+         void totalnumber(){
+             cout<<"total number  obtain  :"<<a+b+c<<endl;
+         }
+ };
+ class Result :public Total
+ {
+     public:
+          void percentage()
+          {
+              cout<<"percentage of student mark is : "<<(a+b+c)/300*100;
+
+          }
+ };
+  int main()
+  {
+       Result R1;
+       R1.setnumber();
+       R1.shownumber();
+       R1.totalnumber();
+       R1.percentage();
+       return 0;
+  }
