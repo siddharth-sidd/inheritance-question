@@ -1,0 +1,67 @@
+/*Question -> Define a class Person with instance members name and age. Also define member functions setName(), setAge(), getName(),
+ getAge(). Now define class Employee by inheriting Person class. In the Employee class define empid and salary as instance members.
+ Also define setEmpid, setSalary, getEmpid, getSalary. ? */
+
+#include<iostream>
+using namespace std;
+class Person
+{
+    protected:
+        char name[20];
+        int age;
+    public:
+         void setname(){
+             cout<<"entre employee name :";
+             gets(name);
+             cout<<endl;
+           }
+          void setage(){
+            cout<<"entre age of employee :";
+            cin>>age;
+            cout<<endl;
+           }
+           char* getname(){
+                 return name;
+            }
+           int   getage(){
+                    return age;  
+            }
+};
+ class employee: public  Person
+ {
+     private:
+         int empid; 
+         float salary;
+    public:
+         void setempid(){
+           cout<<"entre employee ID :";
+             cin>>empid;
+             cout<<endl;
+         }
+         void setsalary(){
+               cout<<"entre employee salary :";
+              cin>>salary;
+              cout<<endl;
+         }
+            int  getempid(){
+              return empid;
+         }
+            float getsalary(){
+               return salary;
+         }
+         void display(){
+           cout<<"name="<<name<<endl<<"age="<<age<<endl<<"empid="<<empid<<endl<<"salary="<<salary;
+         }
+ }; 
+int main()
+{
+      employee E1;
+    
+        E1.setname();
+        E1.setage();
+        E1.setempid();
+        E1.setsalary();
+        E1.display();
+        return 0;
+}
+
